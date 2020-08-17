@@ -26,6 +26,9 @@ defmodule Waffle.Ecto.Type do
     end
   end
 
+  def load(_definition, %{file_name: filename} = value) do
+    {:ok, value}
+  end
   def load(_definition, value) do
     {file_name, gsec} =
       case Regex.match?(@filename_with_timestamp, value) do
